@@ -35,7 +35,7 @@ jobs:
             runner: '["ubuntu-22.04"]'
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v3
@@ -63,7 +63,7 @@ jobs:
         with:
           language: ${{ matrix.language }}
       - name: Setup Go
-        uses: actions/setup-go@v5
+        uses: actions/setup-go@v6
         if: matrix.language == 'go' && fromJSON(steps.resolve-environment.outputs.environment).configuration.go.version
         with:
           go-version: ${{ fromJSON(steps.resolve-environment.outputs.environment).configuration.go.version }}
